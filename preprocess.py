@@ -34,6 +34,8 @@ def preprocess():
     logger.info("start tokenizing data")
     for file in tqdm(os.listdir(args.data_path)):
         file = os.path.join(args.data_path, file)
+        if file.find('.txt') < 0:
+            continue
         with open(file, "r", encoding="utf8")as reader:
             lines = reader.readlines()
             title = lines[1][3:].strip()    # 取出标题
